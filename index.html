@@ -410,7 +410,7 @@
                             <strong style="color: var(--accent-teal);">Your Part:</strong> Provide final inputs and confirmations on any outstanding items.
                         </div>
                         <div class="process-role role-our">
-                            <strong style="color: var(--primary-dark);">Our Part:</strong> Execute close and deliver Management Report (P&L, BS, CFS) by the **15th of the next month**.
+                            <strong style="color: var(--primary-dark);">Our Part:</strong> Execute close and deliver Management Report (P&L, BS, CFS) by the 15th of the next month.
                         </div>
                     </div>
                 </div>
@@ -581,20 +581,25 @@
 
     <!-- CTA Section -->
     <section id="contact" class="py-20" style="background-color: var(--bg-secondary);">
-        <div class="max-w-4xl mx-auto text-center px-4">
-            <h2 class="text-3xl font-bold text-slate-900 mb-6">Start Your Financial Transformation Today</h2>
-            <form onsubmit="event.preventDefault(); alert('Success!');" class="max-w-md mx-auto flex flex-col sm:flex-row gap-3">
-                <input type="email" placeholder="Business email" required class="flex-1 px-5 py-3 rounded-lg border border-slate-300 outline-none">
-                <button type="submit" class="px-8 py-3 rounded-lg text-white font-bold btn-primary shadow-lg">Schedule Consultation</button>
-            </form>
-        </div>
-    </section>
+    <div class="max-w-4xl mx-auto text-center px-4">
+        <h2 class="text-3xl font-bold text-slate-900 mb-6">Start Your Financial Transformation Today</h2>
+
+        <form id="consultationForm" class="max-w-md mx-auto flex flex-col sm:flex-row gap-3">
+            <input type="email" id="userEmail" placeholder="Business email" required
+                   class="flex-1 px-5 py-3 rounded-lg border border-slate-300 outline-none">
+            <button type="submit" class="px-8 py-3 rounded-lg text-white font-bold btn-primary shadow-lg">
+                Schedule Consultation
+            </button>
+        </form>
+    </div>
+</section>
 
     <footer class="py-12" style="background-color: var(--primary-dark);">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <p class="text-slate-400 text-sm">&copy; 2024 Enduring Planet. All rights reserved.</p>
         </div>
     </footer>
+
 
     <script>
         const servicesData = {
@@ -655,6 +660,15 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => filterServices('essential'));
+    </script>
+    <script>
+    document.getElementById('consultationForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = document.getElementById('userEmail').value;
+        const calendlyBaseUrl = 'https://calendly.com/zoe-lassiter-enduringplanet/30min';
+        const finalUrl = `${calendlyBaseUrl}?email=${encodeURIComponent(email)}`;
+        window.location.href = finalUrl;
+    });
     </script>
 </body>
 </html>
