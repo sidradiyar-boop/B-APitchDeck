@@ -609,6 +609,10 @@
                 { title: "Invoicing & Collections", icon: "💸", desc: "Generation and timely delivery of customer invoices and collections follow-up." }
             ],
             controller: [
+
+<!--                { title: "Financial Reporting", icon: "📊", desc: "US GAAP financial reports monthly by the 15th, categorization, and monthly reviews." },-->
+<!--                { title: "Vendor Management", icon: "🤝", desc: "Manage vendor coordination, onboarding, and payment workflows via modern platforms." },-->
+<!--                { title: "Invoicing & Collections", icon: "💸", desc: "Generation and timely delivery of customer invoices and collections follow-up." }-->
                 { title: "DCAA Compliance", icon: "🏛️", desc: "Ensures accounting meets rigorous DCAA standards and FAR Part 31 principles." },
                 { title: "Inventory Management", icon: "📦", desc: "Tracks physical stock against financial records using Purchase Orders as controls." },
                 { title: "Additional Services", icon: "⚙️", desc: "Sales tax, loan admin, system infrastructure, and audit/diligence support." }
@@ -643,7 +647,9 @@
 
             if (gridContainer) {
                 gridContainer.innerHTML = '';
-                const services = servicesData[category];
+                const services = category === 'controller'
+                ? [...servicesData.essential, ...servicesData.controller]
+                : servicesData.essential;
                 services.forEach((service) => {
                     const card = document.createElement('div');
                     card.className = 'service-card bg-white p-6 rounded-xl border border-gray-200 shadow-md flex flex-col';
